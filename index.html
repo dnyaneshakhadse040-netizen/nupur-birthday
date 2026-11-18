@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#8bd5f2" name="theme-color"/>
+<title>Happy Birthday, Bestie!</title>
+<style>
+    :root {
+      --sky: #8bd5f2;
+      --sky-light: #dff6ff;
+      --blue: #237db4;
+      --navy: #173f60;
+      --coral: #f36f5d;
+      --orange: #ffad45;
+      --pink: #f6b8d2;
+      --purple: #8f79bc;
+      --yellow: #ffdc70;
+      --cream: #fff9eb;
+      --ink: #24384a;
+      --white: #ffffff;
+      --shadow: 0 8px 0 rgba(23, 63, 96, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Comic Sans MS", system-ui, sans-serif;
+      background-color: var(--sky-light);
+      background-image:
+        radial-gradient(circle at 12px 12px, rgba(35,125,180,.13) 2px, transparent 2.5px),
+        linear-gradient(145deg, #e6f9ff 0%, #fff4e9 52%, #ffe7f1 100%);
+      background-size: 28px 28px, cover;
+    }
+
+    button { font: inherit; }
+    .site-shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 36px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: clamp(34px, 6vw, 66px) 22px 36px;
+      background: var(--sky);
+      border: 4px solid var(--navy);
+      border-radius: 30px;
+      box-shadow: 8px 9px 0 var(--navy);
+      isolation: isolate;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 180px;
+      height: 180px;
+      border: 18px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+    }
+    .hero::before { left: -82px; top: -95px; }
+    .hero::after { right: -84px; bottom: -112px; width: 230px; height: 230px; }
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 7px 14px;
+      color: var(--navy);
+      background: var(--yellow);
+      border: 2px solid var(--navy);
+      border-radius: 999px;
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      transform: rotate(-2deg);
+    }
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 7vw, 5.3rem);
+      line-height: .98;
+      font-weight: 1000;
+      letter-spacing: -.055em;
+      text-shadow: 3px 4px 0 rgba(255,255,255,.85);
+    }
+    h1 span { color: var(--coral); }
+    .hero-subtitle { margin: 17px 0 0; color: var(--navy); font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 900; letter-spacing: .12em; }
+    .vibe-stickers { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+    .sticker {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 3px solid var(--navy);
+      border-radius: 12px 18px 13px 17px;
+      color: var(--navy);
+      background: var(--white);
+      font-size: .78rem;
+      font-weight: 1000;
+      letter-spacing: .07em;
+      box-shadow: 3px 4px 0 var(--navy);
+    }
+    .sticker.candace { background: #ffe0b8; transform: rotate(-4deg); }
+    .sticker.stacy { background: #f9d7e7; transform: rotate(3deg); }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px auto 26px;
+      padding: 12px;
+      width: fit-content;
+      max-width: 100%;
+      background: var(--navy);
+      border: 3px solid var(--navy);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .tabs button {
+      border: 2px solid transparent;
+      border-radius: 13px;
+      padding: 11px 20px;
+      color: var(--navy);
+      background: var(--white);
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .tabs button:hover { transform: translateY(-3px) rotate(-1deg); background: var(--yellow); }
+    .tabs button[aria-selected="true"] { background: var(--orange); border-color: var(--white); box-shadow: inset 0 -3px 0 rgba(23,63,96,.12); }
+    .tabs button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+
+    .section { display: none; padding: 8px 0 18px; }
+    .section.active { display: block; animation: pop-in .28s ease-out; }
+    @keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .section-title { margin: 0 0 22px; text-align: center; color: var(--navy); font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 1000; }
+    .section-title .accent { color: var(--coral); }
+
+    .card {
+      width: min(930px, 100%);
+      margin: 0 auto;
+      padding: clamp(22px, 4vw, 42px);
+      color: var(--ink);
+      background: var(--cream);
+      border: 4px solid var(--navy);
+      border-radius: 22px 28px 23px 30px;
+      box-shadow: 8px 9px 0 rgba(23,63,96,.2);
+      text-align: left;
+      position: relative;
+    }
+    .card::before {
+      content: "✦ BESTIE MAIL ✦";
+      display: table;
+      margin: -55px auto 22px;
+      padding: 8px 18px;
+      color: var(--navy);
+      background: var(--yellow);
+      border: 3px solid var(--navy);
+      border-radius: 9px;
+      font-size: .75rem;
+      font-weight: 1000;
+      letter-spacing: .12em;
+      transform: rotate(-2deg);
+    }
+    .letter-text { margin: 0; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 1.03rem; line-height: 1.85; font-weight: 600; text-align: left; }
+    .explore-note { margin: 24px 0 0; text-align: center; color: var(--blue); font-weight: 900; }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      width: min(930px, 100%);
+      margin: 0 auto;
+    }
+    .memory {
+      min-width: 0;
+      padding: 17px 17px 20px;
+      color: var(--navy);
+      background: var(--white);
+      border: 3px solid var(--navy);
+      border-radius: 8px;
+      box-shadow: 6px 7px 0 rgba(23,63,96,.17);
+      text-align: center;
+    }
+    .memory:nth-child(odd) { transform: rotate(-1.3deg); }
+    .memory:nth-child(even) { transform: rotate(1.3deg); }
+    .memory h3 { margin: 3px 0 13px; color: var(--coral); font-size: 1.18rem; font-weight: 1000; }
+    .memory-photo { display: block; width: 100%; height: 310px; object-fit: cover; background: #e8f5fb; border: 2px solid #d6e5ec; }
+    .memory p { margin: 13px 0 0; font-weight: 700; line-height: 1.5; }
+
+    .song-card { text-align: center; }
+    .song-card::before { content: "♫ BESTIE SOUNDTRACK ♫"; }
+    .song-card p { font-weight: 700; line-height: 1.6; }
+    .video-wrap { position: relative; width: 100%; max-width: 700px; margin: 20px auto; aspect-ratio: 16 / 9; overflow: hidden; border: 4px solid var(--navy); border-radius: 17px; background: var(--sky-light); }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-placeholder { display: grid; place-items: center; height: 100%; padding: 20px; color: var(--navy); font-weight: 900; }
+
+    footer { margin: 35px 0 0; text-align: center; color: var(--navy); font-size: .83rem; line-height: 1.6; }
+    footer p { margin: 5px 0; }
+    .footer-heart { color: var(--coral); }
+
+    @media (max-width: 700px) {
+      .site-shell { width: min(100% - 22px, 560px); padding-top: 14px; }
+      .hero { border-radius: 22px; box-shadow: 5px 6px 0 var(--navy); }
+      .tabs { width: 100%; gap: 7px; padding: 8px; }
+      .tabs button { flex: 1 1 30%; padding: 10px 7px; font-size: .9rem; }
+      .memory-grid { grid-template-columns: 1fr; gap: 20px; width: min(440px, 100%); }
+      .memory { transform: none !important; }
+      .memory-photo { height: auto; aspect-ratio: 4 / 3; }
+      .card::before { margin-top: -47px; }
+      .letter-text { font-size: .97rem; line-height: 1.75; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+<main class="site-shell">
+<header class="hero">
+<p class="eyebrow">A VERY IMPORTANT BESTIE CELEBRATION</p>
+<h1>HAPPY BIRTHDAY,<br/><span>BESTIE!</span> 🎉</h1>
+<p class="hero-subtitle">2017 TO FOREVER · PARTNERS IN CHAOS</p>
+<div aria-label="Fan-inspired theme" class="vibe-stickers">
+<span class="sticker candace">🧡 CANDACE-LEVEL DRAMA</span>
+<span class="sticker stacy">💗 STACY-LEVEL BESTIE ENERGY</span>
+</div>
+</header>
+<nav aria-label="Birthday website sections" class="tabs" role="tablist">
+<button aria-controls="home" aria-selected="true" onclick="showSection('home', this)" role="tab" type="button">💌 Wish</button>
+<button aria-controls="memories" aria-selected="false" onclick="showSection('memories', this)" role="tab" type="button">📸 Memories</button>
+<button aria-controls="song" aria-selected="false" onclick="showSection('song', this)" role="tab" type="button">🎵 Song</button>
+</nav>
+<section class="section active" id="home" role="tabpanel">
+<h2 class="section-title">A little <span class="accent">birthday love</span> 💌</h2>
+<div class="card">
+<p>Happiest birthday to my forever person, my partner in crime, my unpaid therapist, my gossip partner, my emergency contact and the one person who has witnessed literally every version of me.❤️😭<br>
+
+I genuinely don't even know where to start because HOW THE HELL HAVE WE BEEN DOING THIS FOR ALMOST 9 SOLID YEARS NOW??? SINCE 2017!!! Nine freaking years of us. From being two girls attending lectures, asking each other for notes, figuring out college life and pretending to be responsible students, to now watching each other prepare for job interviews, enter new workplaces and slowly step into adulthood. GIRL, WE HAVE LITERALLY SEEN EACH OTHER THROUGH EVERY POSSIBLE PHASE OF LIFE. 😭<br/>
+
+We've gone from worrying about assignments, attendance and notes to worrying about jobs, careers, relationships and what the hell we're doing with our lives. From bachpan ka first love to adulthood ka situationship. From innocent crushes to experiences we probably shouldn't be discussing so openly but obviously WE DID. 💀 We've literally shared everything, from our first kisses to our first sexual experiences, discussing whether he was good or bad, giving honest reviews, analysing every little detail and making sure absolutely nothing was left undisclosed. At this point, our friendship deserves a confidentiality agreement because the amount of secrets we know about each other is INSANE. 😂<br/>
+And HOW CAN I EVER FORGET OUR ICONIC CHAI-SUTTA BREAKS DURING CLASSES??? The lectures were probably happening, attendance was probably being marked, but our priorities were somewhere else entirely. Those little breaks, random conversations and endless bakbak were honestly some of the best parts of those days. We really thought we were managing life while mostly just surviving on chai, cigarettes and gossip. 😭<br/>
+
+AND THE GOSSIP??? OH MY GOD. The way we used to judge LITERALLY EVERYONE. Nobody was safe. Especially Vaishnavi, Zhandu (YKIYK 💀), and YOUR SO-CALLED BEST FRIEND AKSHATA. GIRL, THE AMOUNT OF DISCUSSIONS WE'VE HAD ABOUT THESE PEOPLE. 😭😭 I swear, if someone ever got access to our conversations, we'd both have to disappear from society. The confidence with which we used to analyse everyone's actions, relationships, personalities and life decisions needs to be studied. And the funniest part is that we could go from discussing someone else's entire life to talking about our own problems in 0.2 seconds.<br/>
+
+I genuinely don't think we have ever run out of things to talk about. Our bakbak is a never-ending subscription that neither of us can cancel. We can talk for hours, jump from one topic to another, repeat the same stories a hundred times and STILL have something new to say. We don't even need a plan to meet. Just put us together and somehow three hours disappear without us realising it.<br/>
+
+But jokes apart, one thing I'll always be grateful for is how we've been there for each other through literally EVERYTHING. The good days, the bad days, the relationship disasters, the embarrassing decisions, the emotional breakdowns, the random panic situations and all those moments when life just decides to be a little too much. I love how we don't even have to think twice before running to each other whenever something goes wrong. It's almost an instinct now. Something happens, and somehow we know we need to call each other. No long explanations required, no pretending, no filters. Just us.<br/>
+
+We've seen each other grow up in real time. We've witnessed each other's stupid crushes, first loves, heartbreaks, questionable choices, career struggles, little achievements and big milestones. We literally went from asking each other for lecture notes to asking each other how a job interview went and how the new workplace is treating us. WHO WOULD HAVE THOUGHT BACK IN 2017 THAT WE'D COME THIS FAR??? 🥹<br/>
+
+And that's what makes this friendship so special to me. We've never just been there for one particular phase of life. We've continued choosing each other through all the different versions of ourselves. We've changed, our priorities have changed, our lives have changed, but somehow our bond has remained the same. No matter how busy life gets or how much things change, I know that one random phone call or one meeting with you will take me straight back to being that same girl from 2017.<br/>
+
+I hope you know how much you mean to me. I hope life gives you all the happiness, love, success and peace that you deserve. I hope you get everything you've ever wished for, find people who genuinely value you, experience beautiful things and never have to settle for anything less than what makes you happy. I want to see you achieve everything you've ever dreamt of, and I'll always be here to celebrate every little and big achievement of yours.<br/>
+
+And obviously, I want MANY MORE YEARS OF US. More chai-sutta breaks, more gossip, more judging people, more relationship reviews, more random life updates, more emergency calls, more stupid plans, more uncontrollable laughter and more memories that we'll keep bringing up even when we're 70.<br/>
+
+I genuinely want us to be those two old ladies sitting together, still discussing everyone's business, still laughing at our questionable past decisions and still having absolutely NO FILTER. 😭<br/>
+
+And one last thing, NUPUR, PLEASE SOMETIME LISTEN TO MY ADVICE. JUST SOMETIME. I'm not asking for too much. And DO NOT, I repeat, DO NOT bring more assholes into our lives. I'M BEGGING YOU. 😭😭 We've had enough character development, enough lessons, enough unnecessary people and enough situationships to last several lifetimes. Let's please make better choices now. I cannot keep attending these emotional damage review meetings forever. 💀<br/>
+
+Thank you for being my person since 2017. Thank you for all the memories, all the secrets, all the laughter, all the stupid conversations and for being someone I can always count on. Thank you for growing up with me and making even the most ordinary days memorable.<br/>
+
+I love you more than all our gossip sessions, all our chai-sutta breaks and all the people we've collectively judged (and trust me, that's A LOT).<br/>
+
+HAPPIEST BIRTHDAY, YOU ABSOLUTE IDIOT. ❤️🥹<br/>
+
+Almost 9 years of friendship, a lifetime of embarrassing stories, unlimited bakbak and absolutely no plans of stopping. 2017 to forever. ALWAYS US. 🫂❤️💖<br/></br></p>
+<p class="explore-note">✨ Click the tabs above to explore our journey! ✨</p>
+</div>
+</section>
+<section class="section" hidden="" id="memories" role="tabpanel">
+<h2 class="section-title">Our Friendship <span class="accent">Journey</span> 💞</h2>
+<div class="memory-grid">
+<div class="memory">
+<h3>2018 — The Beginning</h3>
+<img alt="2018 — The Beginning photo" class="memory-photo" decoding="async" height="350" loading="lazy" src="N13.jpeg" width="600"/>
+<p>We met, we clicked, and the story began.</p>
+</div>
+<div class="memory">
+<h3>School Days</h3>
+<img alt="School Days photo" class="memory-photo" decoding="async" height="450" loading="lazy" src="N10.jpeg" width="600"/>
+<p>Randomly clicked photo bacomes our ICONIC pose.</p>
+</div>
+<div class="memory">
+<h3>College Adventures</h3>
+<img alt="College Adventures photo" class="memory-photo" decoding="async" height="450" loading="lazy" src="N12.jpeg" width="600"/>
+<p>Late-night talks, spontaneous meetups, and endless laughter.</p>
+</div>
+<div class="memory">
+<h3>Today</h3>
+<img alt="Today photo" class="memory-photo" decoding="async" height="450" loading="lazy" src="N4.jpeg" width="600"/>
+<p>Still best friends, still unstoppable. Here’s to forever! 💫</p>
+</div>
+</div>
+</section>
+<section class="section" hidden="" id="song" role="tabpanel">
+<h2 class="section-title">Our little <span class="accent">soundtrack</span> 🎶</h2>
+<div class="card song-card">
+<p>This song reminds me of our bond — timeless and full of joy.</p>
+<div class="video-wrap">
+    <video controls width="100%" height="100%">
+        <source src="C:\Users\USER\Downloads\img\nups2\friendship_lyrics_big_text.mov">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<p>Thank you for being my favorite person for a decade. 💗</p>
+</div>
+</section>
+<footer>
+<p>Made with <span class="footer-heart">♥</span>, nostalgia, and an unreasonable amount of bakbak.</p>
+<p>Unofficial fan-inspired styling inspired by Candace Flynn &amp; Stacy Hirano from <em>Phineas and Ferb</em>. Characters belong to their respective rights holders; no official affiliation.</p>
+</footer>
+</main>
+<script>
+    function showSection(id, clickedButton) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+        section.hidden = true;
+      });
+      document.querySelectorAll('.tabs button').forEach(button => {
+        button.setAttribute('aria-selected', 'false');
+      });
+      const selectedSection = document.getElementById(id);
+      if (selectedSection) {
+        selectedSection.hidden = false;
+        selectedSection.classList.add('active');
+      }
+      if (clickedButton) clickedButton.setAttribute('aria-selected', 'true');
+    }
+  </script>
+</body>
+</html>
